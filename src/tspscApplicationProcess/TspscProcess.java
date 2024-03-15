@@ -39,6 +39,7 @@ public abstract class TspscProcess implements JobNotification,PaymentProcess,Use
     @Override
     public boolean userLoginCredentials(String userTspscId, String mobileNo) {
         if(this.tspscId.equals(userTspscId)&& userInfo.getMobileNo().equals(mobileNo)){
+            this.generateOTP(userTspscId);
             //System.out.println("login successful");
             return true;
         }else{
@@ -51,6 +52,7 @@ public abstract class TspscProcess implements JobNotification,PaymentProcess,Use
     public String generateOTP(String tspscId) {
         if(this.tspscId.equals(tspscId)){
             this.otp="5555";
+            System.out.println("from generate otp");
         }
         return otp;
     }
@@ -69,7 +71,7 @@ public abstract class TspscProcess implements JobNotification,PaymentProcess,Use
         if(userInfo.getName().equals(name)&&userInfo.getAdharCard().equals(adharCard)
                 &&userInfo.getEducation().equals(educationDetails)){
             this.tspscId="12345";
-            System.out.println("GeneratedId:"+tspscId);
+            System.out.println("GeneratedId tspscId:"+tspscId);
             System.out.println("registration successful");
         }else{
             System.out.println("registration failed try again ");
